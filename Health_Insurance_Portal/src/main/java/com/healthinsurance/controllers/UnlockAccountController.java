@@ -1,0 +1,42 @@
+package com.healthinsurance.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.healthinsurance.model.UnlockAccount;
+import com.healthinsurance.model.User;
+import com.healthinsurance.service.RegisterUserService;
+
+@Controller
+public class UnlockAccountController {
+	@Autowired
+	private RegisterUserService service;
+
+	@GetMapping("/unlockAcc")
+	public String loadUnlockAccount(@RequestParam("email") String email, Model model) {
+		model.addAttribute("email", email);
+
+		UnlockAccount acc = new UnlockAccount();
+
+		model.addAttribute("unlockAccount", acc);
+		return "unlockAccount";
+	}
+
+	@PostMapping("/unlockAcc")
+	public String handleuUnlockAccBtn(@ModelAttribute("unlockAcc") UnlockAccount unlocakAcc, Model model) {
+
+		User isUpdated = service.unlockAccount(unlocakAcc);
+		if (isUpdated.getEmail().equals(unlocakAcc.getEmail())) {
+			model.addAttribute("update", "Details Updated Sucessfully please login");
+		} else {
+			model.addAttribute("update", "please enter correct temporary password");
+		}
+		return "login";
+	}
+
+}

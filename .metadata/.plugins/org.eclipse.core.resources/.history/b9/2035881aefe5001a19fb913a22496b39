@@ -1,0 +1,11 @@
+package com.healthinsurance.applicationconstants;
+
+public class ApplicationConstants {
+
+	public static final String TargetStringLength = null;
+	public static final int RightLimit = 0;
+	
+	
+	
+
+}

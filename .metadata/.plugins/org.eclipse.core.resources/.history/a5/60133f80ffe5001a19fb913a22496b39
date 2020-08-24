@@ -1,0 +1,21 @@
+package com.healthinsurance.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
+
+import com.healthinsurance.model.UnlockAccount;
+
+@Controller
+public class UnlockAccountController {
+	
+	@GetMapping("/unlockAcc")
+	public String loadUnlockAccount(@RequestAttribute("email") String email,Model model) {
+		UnlockAccount acc=new UnlockAccount();
+		model.addAttribute("unlockAccount", acc);
+		model.addAttribute("email", email);
+		return "unlockAccount";	
+	}
+
+}

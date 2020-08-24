@@ -1,0 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+body{  
+  font-family: Calibri, Helvetica, sans-serif;  
+  background-color: pink;  
+}  
+.container {  
+    padding: 50px;  
+  background-color: lightblue;  
+}  
+input[type=text]:focus, input[type=password]:focus {  
+  background-color: orange;  
+  outline: none;  
+} 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+} 
+</style>
+</head>
+<body>
+${user}
+<h1 align="center">Create Account</h1>
+<form:form action="registerUser" method="post" modelAttribute="user">
+<table class="center">
+<tr>
+<td>First Name::</td>
+<td><form:input path="firstName"/></td>
+</tr>
+<tr>
+<td>Last Name::</td>
+<td><form:input path="lastName"/></td>
+</tr>
+<tr>
+<td>Email::</td>
+<td><form:input path="email"/></td>
+</tr>
+<tr>
+<td>Gender::</td>
+<td>Male::<form:radiobutton path="gender" value="male"/>
+Female::<form:radiobutton path="gender" value="female"/></td>
+</tr>
+<tr>
+<td>Role::</td>
+<td><form:select path="role" items="${roles}"></form:select></td>
+</tr>
+<tr>
+<td></td>
+<td><input type="submit" value="Create Account"></td>
+</tr>
+</table>
+</form:form>
+</body>
+</html>

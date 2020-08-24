@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function validatePwds() {
+
+		var newPazzword = $('#newPazzword').val();
+		var confirmPazzword = $('#confirmPazzword').val();
+		if (newPazzword != confirmPazzword) {
+
+			$('#errid')
+					.text(
+							"New password and confirm password must and should be same");
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+<form:form action="unlockAcc" method="post" modelAttribute="unlockAccount">
+<table>
+<tr>
+<td>Email:</td>
+<td><form:input path="email" value="${email}"/></td>
+</tr>
+<tr>
+<td>Enter Temporary password:</td>
+<td><form:input path="temporaryPazzword"/></td>
+</tr>
+<tr>
+<td>New Password:</td>
+<td><form:input path="newPazzword"/></td>
+</tr>
+<tr>
+<td>Confirm Password:</td>
+<td><form:input path="confirmPazzword"/></td>
+</tr>
+<tr>
+<td></td>
+<td><input type="submit" value="submit"></td>
+</tr>
+</table>
+</form:form>
+</body>
+</html>

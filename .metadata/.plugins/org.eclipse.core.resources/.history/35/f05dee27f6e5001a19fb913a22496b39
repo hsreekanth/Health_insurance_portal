@@ -1,0 +1,55 @@
+package com.healthinsurance.utilities;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.healthinsurance.model.User;
+
+public class EmailUtils {
+	@Autowired
+	private JavaMailSender mailSender;
+
+	public boolean sendUserAccUnlockEmail(Registration reg)  {
+		boolean isSent=false;
+try {
+		MimeMessage mimeMessage = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+		helper.setTo(reg.getEmail());
+		helper.setSubject("unlock your account");
+		helper.setText(getUnlockAccEmailBody(reg), true);
+		mailSender.send(mimeMessage);
+		
+       isSent=true;
+}
+catch (Exception e) {
+e.printStackTrace();
+}
+return isSent;
+	}
+	public String getUnlockAccEmailBody(User user) throws IOException {
+			StringBuffer sb = new StringBuffer("");
+
+			FileReader fr = new FileReader("UNLOCK-ACC-EMAIL-BODY-TEMPLATE.txt");
+			BufferedReader br = new BufferedReader(fr);
+			String line = br.readLine();
+
+			while (line != null) {
+				sb.append(line);
+				line = br.readLine();
+			}
+			
+			br.close();
+
+			// format mail body
+			String mailBody = sb.toString();
+			mailBody = mailBody.replace("{FNAME}", reg.getFirstName());
+			mailBody = mailBody.replace("{LNAME}", reg.getLastName());
+			mailBody = mailBody.replace("{TEMP-PWD}", reg.getPwd());
+			mailBody = mailBody.replace("{EMAIL}", reg.getEmail());
+
+			return mailBody;
+		}
+
+}
+
+	
+}

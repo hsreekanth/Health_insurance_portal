@@ -1,0 +1,18 @@
+package com.healthinsurance.service;
+
+import org.springframework.stereotype.Service;
+
+import com.healthinsurance.entities.CreateUserRepo;
+import com.healthinsurance.model.User;
+
+@Service
+public class RegisterUserServiceImpl  implements RegisterUserService{
+	
+	private CreateUserRepo repo;
+	public String registerUser(User user)
+	{
+		
+		
+	};
+
+}

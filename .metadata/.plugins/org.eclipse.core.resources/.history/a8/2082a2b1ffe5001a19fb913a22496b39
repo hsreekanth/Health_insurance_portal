@@ -1,0 +1,10 @@
+package com.healthinsurance.service;
+
+import com.healthinsurance.model.UnlockAccount;
+import com.healthinsurance.model.User;
+
+public interface RegisterUserService {
+	public String registerUser(User user);
+
+
+}

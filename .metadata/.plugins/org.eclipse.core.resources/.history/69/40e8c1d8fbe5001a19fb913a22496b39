@@ -1,0 +1,15 @@
+Hi  {FNAME} {LNAME} :
+<br/>
+
+Welcome to <b>HIS Portal we are happy to help you.</b> family, Your registration is almost completed.Plese use below details to unlock your account.<br/>
+<br/>
+
+Temporary Password : <b>{TEMP-PWD}</b><br/>
+<br/>
+
+<a href='http://localhost:8080/unlockAcc?email={EMAIL}'>
+Click Here To Unlock Your Account</a> <br/>
+<br/>
+
+Thanks & Regards,<br/>
+TCS Team.<br/>

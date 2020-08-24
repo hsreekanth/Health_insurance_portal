@@ -1,0 +1,31 @@
+package com.healthinsurance.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import lombok.Data;
+
+@Entity
+@Data
+@Table(name = "Create_user")
+public class CreateUser {
+	@Id
+	@GeneratedValue
+	private int id;
+	private String firstName;
+	private String lastName;
+	private String gender;
+	private String role;
+	private String lockStatus;
+	private String accountAction;
+	@CreationTimestamp
+	@Temporal(TemporalType.DATE)
+	private String createdDate;
+	private String updatedDate;
+}

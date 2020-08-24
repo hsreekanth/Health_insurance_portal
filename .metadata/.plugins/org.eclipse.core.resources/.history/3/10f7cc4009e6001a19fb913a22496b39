@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+<thead>
+<tr>
+<th>S.NO</th>
+<th>Name</th>
+<th>Email</th>
+<th>Action</th>
+</tr>
+</thead>
+tbody>
+
+<c:forEach items="${users}" var="user" varStatus="index">
+<tr><td><c:out value="${index.count}"/></td>
+<td><c:out value="${users.firstName}"/></td>
+<td><c:out value="${user.email}"/></td>
+<td><c:out value="${contact.contactPhoneNumber}"/></td>
+<td><a href="editContact?contactId=${contact.contactId}">Edit</a>|
+<a href="deleteContact?contactId=${contact.contactId}" onclick="{ return deleteConfirm();}">delete</a></td></tr>
+</c:forEach>
+</tbody>
+</table>
+</body>
+</html>

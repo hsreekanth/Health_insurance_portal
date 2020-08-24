@@ -1,0 +1,7 @@
+package com.healthinsurance.service;
+
+public interface RegisterUserService {
+	
+	public String registerUser(User user);
+
+}

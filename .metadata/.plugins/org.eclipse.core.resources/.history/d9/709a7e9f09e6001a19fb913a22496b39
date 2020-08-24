@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+<script>
+function deleteConfirm(){
+	return confirm("Are you sure! you want to delete?")
+}
+$(document).ready(function() {
+    $('#ct_dtls').DataTable( {
+        "pagingType": "full_numbers"
+    } );
+} );
+</script>
+</head>
+<body>
+<table>
+<thead>
+<tr>
+<th>S.NO</th>
+<th>Name</th>
+<th>Email</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+
+<c:forEach items="${users}" var="user" varStatus="index">
+<tr><td><c:out value="${index.count}"/></td>
+<td><c:out value="${user.firstName}"/></td>
+<td><c:out value="${user.email}"/></td>
+<td><c:out value="${user.action}"/></td>
+<td><a href="editAccount?accountId=${contact.contactId}">Edit</a>|
+<a href="deleteContact?accountId=${contact.contactId}" onclick="{ return deleteConfirm();}">delete</a></td></tr>
+</c:forEach>
+</tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,30 @@
+package com.healthinsurance;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.healthinsurance.model.User;
+
+@Controller
+public class RegisterController {
+	
+	@GetMapping("/register")
+	public String loadRegistrationForm(Model model) {
+		User user=new User();
+		model.addAttribute("user",user);
+		return "registration";
+		
+	}
+	public List<String> addRoles(){
+		List<String> roles=new ArrayList<>();
+		roles.add("Admin");
+		roles.add("case Worker");
+		return roles;
+	}
+	
+
+}

@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form:form action="unlockAccount" method="post">
+<table>
+<tr>
+<td>Email:</td>
+<td><form:input path="${email}"/></td>
+</tr>
+<tr>
+<td>Enter Temporary password:</td>
+<td><form:input path="${email}"/></td>
+</tr>
+<tr>
+<td>New Password:</td>
+<td><form:input path="${email}"/></td>
+</tr>
+<tr>
+<td>Confirm Password:</td>
+<td><form:input path="${email}"/></td>
+</tr>
+</table>
+</form:form>
+</body>
+</html>

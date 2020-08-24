@@ -1,0 +1,9 @@
+package com.healthinsurance.service;
+
+import com.healthinsurance.model.User;
+
+public class RegisterUserServiceImpl  implements RegisterUserService{
+	public String registerUser(User user) {
+		return null;};
+
+}

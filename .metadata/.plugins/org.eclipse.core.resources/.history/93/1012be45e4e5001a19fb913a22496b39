@@ -1,0 +1,5 @@
+package com.healthinsurance.model;
+
+public class User {
+
+}

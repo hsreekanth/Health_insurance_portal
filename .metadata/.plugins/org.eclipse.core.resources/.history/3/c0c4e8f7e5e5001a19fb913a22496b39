@@ -1,0 +1,24 @@
+package com.healthinsurance.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.healthinsurance.entities.CreateUser;
+import com.healthinsurance.entities.CreateUserRepo;
+import com.healthinsurance.entities.RegisterUserEntity;
+import com.healthinsurance.entities.RegisterUserRepo;
+import com.healthinsurance.model.User;
+
+@Service
+public class RegisterUserServiceImpl  implements RegisterUserService{
+	@Autowired
+	private RegisterUserRepo repo;
+	public String registerUser(User user)
+	{
+	 RegisterUserEntity entity = repo.findByEmail(user.getEmail());
+		return null;
+		
+		
+	};
+
+}

@@ -1,0 +1,5 @@
+package com.healthinsurance;
+
+public class RegisterController {
+
+}

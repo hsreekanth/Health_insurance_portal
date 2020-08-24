@@ -1,0 +1,5 @@
+package com.healthinsurance.utilities;
+
+public class PasswordGenerator {
+
+}
