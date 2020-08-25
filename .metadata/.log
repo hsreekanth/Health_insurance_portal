@@ -7524,3 +7524,15 @@ java.util.concurrent.TimeoutException
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-25 11:52:34.606
 !MESSAGE executing callback sts4.classpath.EncWLzQP SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-25 12:54:28.831
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.EncWLzQP
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-25 12:54:28.850
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.EncWLzQP
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-25 12:54:28.866
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-08-25 12:54:28.886
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.EncWLzQP => OK

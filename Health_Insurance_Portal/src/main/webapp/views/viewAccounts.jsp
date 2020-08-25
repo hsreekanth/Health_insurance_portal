@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,9 +26,10 @@
 </script>
 </head>
 <body>
-<h1>view Accounts</h1>
+	<h1 align="center"><b>view Accounts</b></h1>
+	<h1 align="center">${status}</h1>
 	<table border="1" id="Act_dtls">
-		
+
 		<thead>
 			<tr>
 				<th>S.NO</th>
@@ -43,10 +44,14 @@
 					<td><c:out value="${index.count}" /></td>
 					<td><c:out value="${user.firstName}" /></td>
 					<td><c:out value="${user.email}" /></td>
-					<td><c:out value="${user.accountAction}" /></td>
-					<td><a href="editAccount?accountId=${user.id}">Edit</a>|
-						<a href="deleteContact?accountId=${user.id}"
-						onclick="{ return deleteConfirm();}">delete</a></td>
+					<td><a href="editAccount?accountId=${user.id}">Edit</a>| <c:if
+							test="${user.accountSwitch=='Y'}">
+							<a href="deleteAccount?accountId=${user.id}"
+								onclick="{ return deleteConfirm();}">Activate</a>
+						</c:if> <c:if test="${user.accountSwitch=='N'}">
+							<a href="deleteAccount?accountId=${user.id}"
+								onclick="{ return deleteConfirm();}">Delete</a>
+						</c:if></td>
 				</tr>
 			</c:forEach>
 		</tbody>

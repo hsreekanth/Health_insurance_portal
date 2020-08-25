@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface RegisterUserRepo extends JpaRepository<RegisterUserEntity, Serializable> {
 	
 	public RegisterUserEntity findByEmail(String email);
-	
+	public RegisterUserEntity findById(Integer id);
 	public List<RegisterUserEntity> findByRole(String role);
 
 }

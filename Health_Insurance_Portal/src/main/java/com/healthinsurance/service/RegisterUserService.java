@@ -9,7 +9,11 @@ public interface RegisterUserService {
 	public String registerUser(User user);
 
 	public User unlockAccount(UnlockAccount account);
-	
-	public List<User> getAllUsersBasedOnRole(String role);
+
+	public User updateAccountDetailsBasedOnUserId(Integer userID);
+
+	public List<User> getAllUsers();
+
+	public User checkAccountActivationSwitchToDeleteOrActivate(Integer userId);
 
 }

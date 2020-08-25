@@ -21,7 +21,7 @@ import lombok.Data;
 public class RegisterUserEntity {
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	@Column(name = "first_name")
 	private String firstName;
 	@Column(name = "last_name")
@@ -36,6 +36,7 @@ public class RegisterUserEntity {
 	private String pazzword;
 	@Column(name = "lock_status")
 	private String lockStatus;
+	private String accountSwitch;
 	@Column(name = "account_action")
 	private String accountAction;
 	@CreationTimestamp

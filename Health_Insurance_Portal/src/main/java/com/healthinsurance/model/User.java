@@ -5,11 +5,12 @@ import lombok.Data;
 @Data
 public class User {
 
-	private int id;
+	private Integer id;
 	private String firstName;
 	private String lastName;
 	private String gender;
 	private String email;
 	private String role;
 	private String accountAction;
+	private String accountSwitch;
 }

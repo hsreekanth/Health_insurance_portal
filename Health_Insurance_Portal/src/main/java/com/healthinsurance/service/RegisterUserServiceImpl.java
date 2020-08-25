@@ -25,7 +25,12 @@ public class RegisterUserServiceImpl implements RegisterUserService {
 	public String registerUser(User user) {
 		RegisterUserEntity register = null;
 		RegisterUserEntity entity = repo.findByEmail(user.getEmail());
-		if (entity != null) {
+		if (user.getId() != null) {
+			register = new RegisterUserEntity();
+			BeanUtils.copyProperties(user, register);
+			repo.save(register);
+			return "user updated sucessfully";
+		} else if (entity != null) {
 			return "user already registered with mail-id please check";
 		} else {
 			register = new RegisterUserEntity();
@@ -33,6 +38,7 @@ public class RegisterUserServiceImpl implements RegisterUserService {
 			register.setLockStatus(ApplicationConstants.LOCK_STATUS);
 			register.setPazzword(PasswordGenerator.generateTemporaryPazzword());
 			register.setAccountAction(ApplicationConstants.ACCOUNT_ACTION);
+			register.setAccountSwitch("N");
 			RegisterUserEntity savedEntity = repo.save(register);
 			emailUtils.sendUserAccUnlockEmail(savedEntity);
 			return "user registered sucessfully please unlock account your email";
@@ -60,15 +66,36 @@ public class RegisterUserServiceImpl implements RegisterUserService {
 	}
 
 	@Override
-	public List<User> getAllUsersBasedOnRole(String role) {
-		List<RegisterUserEntity> allWorkers = repo.findByRole(role);
+	public List<User> getAllUsers() {
+		List<RegisterUserEntity> allWorkers = repo.findAll();
 		List<User> allUsers = allWorkers.stream().map(entity -> {
 			User user = new User();
-
 			BeanUtils.copyProperties(entity, user);
 			return user;
 		}).collect(Collectors.toList());
 		return allUsers;
+	}
+
+	@Override
+	public User updateAccountDetailsBasedOnUserId(Integer userId) {
+		RegisterUserEntity entity = repo.findById(userId);
+		User reg = new User();
+		BeanUtils.copyProperties(entity, reg);
+		return reg;
+	}
+
+	@Override
+	public User checkAccountActivationSwitchToDeleteOrActivate(Integer userId) {
+		User planDetails = new User();
+		RegisterUserEntity entity = repo.findById(userId);
+		if (entity.getAccountSwitch().equalsIgnoreCase("N")) {
+			entity.setAccountSwitch("Y");
+		} else {
+			entity.setAccountSwitch("N");
+		}
+		RegisterUserEntity savedEntity = repo.save(entity);
+		BeanUtils.copyProperties(savedEntity, planDetails);
+		return planDetails;
 	}
 
 }

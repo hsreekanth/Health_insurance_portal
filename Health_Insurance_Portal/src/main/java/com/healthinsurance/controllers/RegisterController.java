@@ -47,13 +47,36 @@ public class RegisterController {
 	}
 
 	@GetMapping("/users")
-	public String getAllUsersBasedOnRole(@RequestParam("role") String role, Model model) {
+	public String getAllUsers(Model model) {
 
-		List<User> allUsersBasedOnRole = service.getAllUsersBasedOnRole(role);
+		List<User> allUsersBasedOnRole = service.getAllUsers();
 		model.addAttribute("users", allUsersBasedOnRole);
 		List<String> roles = RegisterController.addRoles();
-		model.addAttribute("roles",roles);
+		model.addAttribute("roles", roles);
+		model.addAttribute("status");
 		return "viewAccounts";
+
+	}
+
+	@GetMapping("/editAccount")
+	public String editPlanBasedOnPlanId(@RequestParam("accountId") Integer userId, Model model) {
+		User acctDtls = service.updateAccountDetailsBasedOnUserId(userId);
+		model.addAttribute("user", acctDtls);
+		model.addAttribute("roles", RegisterController.addRoles());
+		return "registration";
+	}
+
+	@GetMapping("/deleteAccount")
+	public String deleteBasedOnAccountId(@RequestParam("accountId") Integer planId, RedirectAttributes redirect,
+			Model model) {
+		User planStatus = service.checkAccountActivationSwitchToDeleteOrActivate(planId);
+		if (planStatus.getAccountSwitch().equalsIgnoreCase("N")) {
+			redirect.addFlashAttribute("status", "account activated sucessfully");
+		} else {
+			redirect.addFlashAttribute("status", "account deletes sucessfully");
+
+		}
+		return "redirect:/users";
 
 	}
 
