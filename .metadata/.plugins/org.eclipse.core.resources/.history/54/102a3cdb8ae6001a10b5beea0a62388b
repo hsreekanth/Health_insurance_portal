@@ -1,0 +1,12 @@
+package com.healthinsurance.service;
+
+import java.util.List;
+
+import com.healthinsurance.model.PlanRegistration;
+
+public interface PlanRegisterService  {
+
+	public boolean savePlanDetails();
+	public PlanRegistration updatePlanDetailsBasedOnPlanId(String planId);
+	public List<PlanRegistration> getAllPlanDetails();
+}

@@ -1,0 +1,20 @@
+package com.healthinsurance.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.healthinsurance.model.PlanRegistration;
+
+@Controller
+public class PlanRegistrationController {
+	
+	@GetMapping
+	public String loadPlanRegisterForm(Model model) {
+		
+		PlanRegistration reg=new PlanRegistration();
+		model.addAttribute("planreg", reg);
+		return "planRegistration";
+	}
+
+}

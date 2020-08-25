@@ -1,6 +1,0 @@
-package com.healthinsurance.service;
-
-public class RegisterUserServiceImpl  implements RegisterUserService{
-	public String registerUser(User user) {};
-
-}

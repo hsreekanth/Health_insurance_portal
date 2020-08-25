@@ -1,0 +1,70 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$("#datepicker").datepicker();
+	});
+</script>
+<style type="text/css">
+body {
+	font-family: Calibri, Helvetica, sans-serif;
+	background-color: pink;
+}
+
+.container {
+	padding: 50px;
+	background-color: lightblue;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+	background-color: orange;
+	outline: none;
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+</head>
+<body>
+	${status}
+	<h1 align="center">Create Account</h1>
+	<form:form action="planRegister" method="post" modelAttribute="planreg">
+		<table class="center">
+			<tr>
+				<td>Plan Name::</td>
+				<td><form:input path="planName" /></td>
+			</tr>
+			<tr>
+				<td>Plan Description::</td>
+				<td><form:input path="planDescription" /></td>
+			</tr>
+			<tr>
+				<td>Plan Start Date</td>
+				<td><form:input path="startDate" id="datepicker" /></td>
+			</tr>
+			<tr>
+				<td>Plan End Date</td>
+				<td><form:input path="endDate" id="datepicker" /></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td><input type="submit" value="submit"></td>
+			</tr>
+		</table>
+	</form:form>
+</body>
+</html>

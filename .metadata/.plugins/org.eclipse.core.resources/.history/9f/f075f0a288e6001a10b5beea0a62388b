@@ -1,0 +1,24 @@
+package com.healthinsurance.entities;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Entity
+@Table
+@Data
+public class PlanRegistrationEntity {
+
+	@Id
+	@GeneratedValue
+	private String planId;
+	private String planName;
+	private String planDescription;
+	private Date startDate;
+	private Date endDate;
+}

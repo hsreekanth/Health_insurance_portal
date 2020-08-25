@@ -1,0 +1,35 @@
+package com.healthinsurance.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.healthinsurance.entities.PlanRegistrationRepo;
+import com.healthinsurance.model.PlanRegistration;
+
+@Service
+public class PlanRegisterServiceImpl implements PlanRegisterService{
+	
+	@Autowired
+	private PlanRegistrationRepo repo;
+
+	@Override
+	public boolean savePlanDetails() {
+		
+		return false;
+	}
+
+	@Override
+	public PlanRegistration updatePlanDetailsBasedOnPlanId(String planId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PlanRegistration> getAllPlanDetails() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

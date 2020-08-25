@@ -1,0 +1,14 @@
+package com.healthinsurance.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Entity
+@Table
+@Data
+public class PlanRegistrationEntity {
+
+	
+}
